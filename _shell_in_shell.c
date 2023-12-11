@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include "main.h"
+
+/**
+  * _shell_in_shell - spawns the shell. shell within a shell
+  * @args: user commands and argumets
+  *
+  * Return: Always 0 on success
+  */
+int _shell_in_shell(char **args)
+{
+	int status;
+	pid_t shell_pid;
+
+	shell_pid = fork();
+	if (shell_pid == -1)
+	{
+		perror("Error: failed to fork: shell_pid\n");
+		return (-1);
+	}
+	else if (shell_pid == 0)
+	{
+		if (execve(args[0], args, environ) == -1)
+		{
+			perror("Error: execve failed: shell_args\n");
+			return (-1);
+		}
+	}
+	else
+	{
+		do {
+			waitpid(shell_pid, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
+
+	return (0);
+}
