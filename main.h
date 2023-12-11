@@ -3,7 +3,14 @@
 
 extern char **environ;
 
-typedef struct
+/**
+  * struct cmdMap - Built-in command structure
+  * @command: built-in command
+  * @function: function pointer
+  *
+  * Description: The structure containing function pointers to the commands
+  */
+typedef struct cmdMap
 {
 	const char *command;
 	int (*function)(char **);
@@ -33,7 +40,7 @@ void built_in_exit(void);
 int built_in_env(char **args);
 char *_strcpy(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);
-char *_snprint(char *file_path, size_t buffer_size, char *token, char *command);
+char *_snprint(char *file_path, char *token, char *command);
 int _fprintf(FILE *stream, const char *format, ...);
 void handle_int(FILE *stream, int num);
 void handle_str(FILE *stream, const char *str);

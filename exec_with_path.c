@@ -109,7 +109,7 @@ int exec_with_path(char *command, char **args)
 
 		file_path = malloc(buffer_size);
 		_file_path_err(file_path);
-		_snprint(file_path, buffer_size, token, command);
+		_snprint(file_path, token, command);
 		if (access(file_path, X_OK) == 0)
 		{
 			found = 1;
