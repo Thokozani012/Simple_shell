@@ -52,7 +52,7 @@ int _shell_in_shell(char **args);
 ssize_t _getline(char **lineptr, size_t *len, FILE *stream);
 char *_memcpy(char *dest, char *src, unsigned int n);
 void *_realloc(void *ptr, unsigned int new_size, unsigned int old_size);
-ssize_t _get(char **lineptr, size_t *n, FILE *stream);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int _process_char(char **lineptr, size_t *n, size_t *current_len, char ch);
 int _strcmp(const char *s1, const char *s2);
 char *_strtok(char *str, const char *delimiters);
@@ -66,5 +66,10 @@ int built_in_setenv(char **args);
 int _unsetenv(char *name);
 int built_in_unsetenv(char **args);
 void tokenStart_null(char **lastToken);
+int built_in_cd(char **args);
+int new_pwd(void);
+void cd_dash(void);
+int err_getenv(char *var);
+char *_getenv(const char *name);
 
 #endif /* MAIN_H */

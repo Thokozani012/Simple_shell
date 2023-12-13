@@ -50,7 +50,7 @@ int _process_char(char **lineptr, size_t *n, size_t *current_len, char ch)
   * Return: On success the number of read characters from 'stream' is returned
   * , or -1 is returned on failure or error.
   */
-ssize_t _get(char **lineptr, size_t *n, FILE *stream)
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	char ch;
 	size_t current_len;

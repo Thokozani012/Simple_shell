@@ -92,7 +92,7 @@ int exec_with_path(char *command, char **args)
 	int found = 0;
 	size_t path_len, command_len, buffer_size;
 
-	path = getenv("PATH");
+	path = _getenv("PATH");
 	_path_err(path);
 	path_copy = _strdup(path);
 	if (path_copy == NULL)

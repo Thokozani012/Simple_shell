@@ -81,3 +81,71 @@ int built_in_unsetenv(char **args)
 
 	return (0);
 }
+
+/**
+  * new_pwd - Updates the 'PWD' env variable when switching between directories
+  *
+  * Return: Always 0.
+  */
+int new_pwd(void)
+{
+	char curr_dir[1024], *c_dir;
+
+	c_dir = getcwd(curr_dir, sizeof(curr_dir));
+	if (c_dir == NULL)
+	{
+		perror("Error: getcwd failed\n");
+		return (-1);
+	}
+
+	_setenv("PWD", c_dir, 1);
+
+	return (0);
+}
+
+/**
+  * built_in_cd - built-in 'cd' command, for switching between directories
+  * @args: dictories to witch to
+  *
+  * Return: Always 0 on success, or -1 on error
+  */
+int built_in_cd(char **args)
+{
+	char *home, *new_old;
+
+	if (args[1] == NULL)
+	{
+		home = _getenv("HOME");
+		if (home == NULL)
+		{
+			perror("Error: directory not found\n");
+			return (-1);
+		}
+		new_old = _getenv("PWD");
+		err_getenv(new_old);
+		if (chdir(home) == 0)
+		{
+			new_pwd();
+			_setenv("OLDPWD", new_old, 1);
+		}
+	}
+	else if (_strcmp(args[1], "-") == 0)
+	{
+		cd_dash();
+	}
+	else
+	{
+		char *dir = args[1], *new_old;
+		/*let's get the current working directory before switching */
+		new_old = _getenv("PWD");
+		err_getenv(new_old);
+		if (chdir(dir) == 0)
+		{
+			new_pwd();
+			_setenv("OLDPWD", new_old, 1);
+		}
+		else
+			perror("Error: directory not found\n");
+	}
+	return (0);
+}

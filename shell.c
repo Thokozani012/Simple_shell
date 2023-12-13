@@ -33,6 +33,7 @@ int execute_command(char **args)
 		{"./hsh", _shell_in_shell},
 		{"setenv", built_in_setenv},
 		{"unsetenv", built_in_unsetenv},
+		{"cd", built_in_cd},
 		{NULL, NULL}
 	};
 
@@ -68,7 +69,7 @@ int main(int argc, char *argv[])
 		while (1) /* interactive mode */
 		{
 			command_prompt();
-			nread = _get(&lineptr, &len, stdin);
+			nread = _getline(&lineptr, &len, stdin);
 			if (nread == -1)
 			{
 				perror("\nexit\n\n\n[Disconnected...]\n");
