@@ -20,7 +20,8 @@ int _malloc_args_err(char **args)
   * execute_command - executes built-in commands
   * @args: commands and arguments entered by the user
   *
-  * Return: Nothing (void function)
+  * Return: 1 is returned if a built-in command is executed/found
+  * or 0 where the command is not built-in
   */
 int execute_command(char **args)
 {

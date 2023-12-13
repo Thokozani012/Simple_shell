@@ -8,7 +8,7 @@
   * @args: command arguments
   * @found: flag used to indicate when 'command' is found
   *
-  * Return: Nothing (void function)
+  * Return: Always 0 on success, or -1 on failure
   */
 int _found(char *file_path, char *command, char **args, int found)
 {

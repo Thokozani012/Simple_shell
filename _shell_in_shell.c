@@ -5,7 +5,7 @@
   * _shell_in_shell - spawns the shell. shell within a shell
   * @args: user commands and argumets
   *
-  * Return: Always 0 on success
+  * Return: Always 0 on success, or -1 on error
   */
 int _shell_in_shell(char **args)
 {

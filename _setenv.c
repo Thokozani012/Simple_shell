@@ -5,7 +5,7 @@
   * @name: name of the environment variable
   * @value: value of the environment variable
   *
-  * Return: Nothing (void function)
+  * Return: Always a pointer to a new allocated memory/buffer
   */
 char *_sprintf(const char *name, const char *value)
 {

@@ -42,7 +42,7 @@ int _process_char(char **lineptr, size_t *n, size_t *current_len, char ch)
 }
 
 /**
-  * _get - custom getline function that reads from the FILEe stream stdin
+  * _getline - custom getline function that reads from the FILEe stream stdin
   * @lineptr: Pointer to the stdin stream
   * @n: Original size of rhe line on the stdin
   * @stream: specified file stream

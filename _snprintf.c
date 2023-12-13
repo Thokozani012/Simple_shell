@@ -7,7 +7,7 @@
   * @token: Tokenized directories in the 'PATH' environment variable
   * @command: command of the user together with the "PATH' dir
   *
-  * Return: the buffer (file_path)
+  * Return: Always a pointer to the buffer 'file_path'
   */
 
 char *_snprint(char *file_path, char *token, char *command)

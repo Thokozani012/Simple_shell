@@ -5,7 +5,8 @@
   * token_lineptr - Tokenize the input command
   * @lineptr: command from the stdin entered by the user
   *
-  * Return: On success 1 is returned, or -1 on errno.
+  * Return: Pointer to a pointer to tokenized commands/arguments are returned
+  * , or exit 1 status is returned.
   */
 
 char **token_lineptr(char *lineptr)

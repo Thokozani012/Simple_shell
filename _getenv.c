@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+  * _getenv - find and returns an environment variable from the env list
+  * @name: The variable to be searched on the list
+  *
+  * Return: A pointer to the value of the variable 'name',
+  * or NULL when 'name' doesn't exist
+  */
 char *_getenv(const char *name)
 {
 	char **env = environ;
