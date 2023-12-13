@@ -71,7 +71,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			return (-1);
 		}
 	}
-
 	if (current_len != 0)
 		fflush(stream);
 	current_len = 0;

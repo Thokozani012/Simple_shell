@@ -11,6 +11,7 @@
 int _execvecmd(char **args)
 {
 	char *cmd = NULL;
+	char **env = environ;
 	pid_t shell_child_pid;
 	int status;
 
@@ -25,7 +26,7 @@ int _execvecmd(char **args)
 
 		if (shell_child_pid == 0)
 		{
-			if (execve(cmd, args, NULL) == -1)
+			if (execve(cmd, args, env) == -1)
 			{
 				perror("tsh: execve failed: shell_child_pid\n");
 				return (-1);

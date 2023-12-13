@@ -9,6 +9,7 @@
   */
 int _shell_in_shell(char **args)
 {
+	char **env = environ;
 	int status;
 	pid_t shell_pid;
 
@@ -20,7 +21,7 @@ int _shell_in_shell(char **args)
 	}
 	else if (shell_pid == 0)
 	{
-		if (execve(args[0], args, environ) == -1)
+		if (execve(args[0], args, env) == -1)
 		{
 			perror("Error: execve failed: shell_args\n");
 			return (-1);
