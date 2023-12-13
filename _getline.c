@@ -53,7 +53,7 @@ int _process_char(char **lineptr, size_t *n, size_t *current_len, char ch)
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
 	char ch;
-	size_t current_len = 0;
+	size_t current_len;
 	int c, result;
 
 	if (lineptr == NULL || n == NULL)
@@ -72,6 +72,9 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		}
 	}
 
+	if (current_len != 0)
+		fflush(stream);
+	current_len = 0;
 	while (ch != EOF)
 	{
 		c = read(STDIN_FILENO, &ch, 1);

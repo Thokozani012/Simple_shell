@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 		while (1) /* interactive mode */
 		{
 			command_prompt();
-			nread = _getline(&lineptr, &len, stdin);
+			nread = getline(&lineptr, &len, stdin);
 			if (nread == -1)
 			{
 				perror("\nexit\n\n\n[Disconnected...]\n");
