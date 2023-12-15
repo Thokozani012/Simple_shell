@@ -13,7 +13,7 @@ int _execvecmd(char **args)
 	char *cmd = NULL;
 	char **env = environ;
 	pid_t shell_child_pid;
-	int status;
+	/*int status;*/
 
 	if (args)
 	{
@@ -34,7 +34,7 @@ int _execvecmd(char **args)
 		}
 		else
 		{
-			wait(&status);
+			wait(NULL);
 		}
 	}
 	return (0);

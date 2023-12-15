@@ -40,7 +40,7 @@ void built_in_exit(void);
 int built_in_env(char **args);
 char *_strcpy(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);
-char *_snprint(char *file_path, char *token, char *command);
+int _snprint(char *file_path, size_t buffer_size, char *token, char *command);
 int _fprintf(FILE *stream, const char *format, ...);
 void handle_int(FILE *stream, int num);
 void handle_str(FILE *stream, const char *str);
@@ -71,5 +71,6 @@ int new_pwd(void);
 void cd_dash(void);
 int err_getenv(char *var);
 char *_getenv(const char *name);
+int executer(char *file_path, char **args, char **env, int status);
 
 #endif /* MAIN_H */

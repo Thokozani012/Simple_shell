@@ -47,10 +47,10 @@ int built_in_setenv(char **args)
 		perror("Error: setenv\n");
 		return (-1);
 	}
-	else
+	/*else
 	{
 		printf("Environment variable set: %s=%s\n", args[1], args[2]);
-	}
+	}*/
 
 	return (0);
 }
@@ -74,10 +74,10 @@ int built_in_unsetenv(char **args)
 		perror("Error: unsetenv\n");
 		return (-1);
 	}
-	else
+	/*else
 	{
 		printf("Environment variable removed:%s\n", args[1]);
-	}
+	}*/
 
 	return (0);
 }

@@ -21,6 +21,7 @@ int _shell_in_shell(char **args)
 	}
 	else if (shell_pid == 0)
 	{
+		/*char *arg[] = {"/bin/sh", NULL};*/
 		if (execve(args[0], args, env) == -1)
 		{
 			perror("Error: execve failed: shell_args\n");

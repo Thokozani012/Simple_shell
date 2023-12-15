@@ -10,11 +10,27 @@
   * Return: Always a pointer to the buffer 'file_path'
   */
 
-char *_snprint(char *file_path, char *token, char *command)
+int _snprint(char *file_path, size_t buffer_size, char *token, char *command)
 {
-	_strcpy(file_path, token);
-	_strcat(file_path, "/");
-	_strcat(file_path, command);
+	size_t required_size;
 
-	return (file_path);
+	if (!file_path || !buffer_size|| !token || !command)
+	{
+		perror("tsh: Invalid argument\n");
+		return (-1);
+	}
+
+	required_size = _strlen(token) + _strlen("/") + _strlen(command) + 1;
+	if (required_size > buffer_size)
+	{
+		perror("tsh: buffer_overflow\n");
+		return (-1);
+	}
+
+	_strcpy(file_path, token);
+	file_path[_strlen(token)] = '/';
+
+	_strcpy(file_path + _strlen(token) + 1, command);
+	
+	return (0);
 }

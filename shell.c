@@ -58,12 +58,12 @@ int execute_command(char **args)
  * Return: On success 0, or -1 on error/failure
  */
 
-int main(int argc, char *argv[])
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)))
 {
 	ssize_t nread;
 	size_t len = 0;
 	char *lineptr = NULL, **args;
-	int i;
+	/*int i;*/
 
 	if (isatty(STDIN_FILENO))
 	{
@@ -88,14 +88,36 @@ int main(int argc, char *argv[])
 		}
 		free(lineptr);
 	}
-	else /*Non-interactive mode*/
+	else /* Non-interactive mode */
 	{
-		args = malloc((argc - 1) * sizeof(char *));
+		/*args = malloc((argc - 1) * sizeof(char *));
 		_malloc_args_err(args);
 		for (i = 1; i < argc; i++)
 			args[i - 1] = argv[i];
 		args[i - 1] = NULL;
-		_execvecmd(args);
+		_execvecmd(args);*/
+
+		while ((nread = getline(&lineptr, &len, stdin)) != -1)
+		{
+			if (nread > 0 && lineptr[nread - 1] == '\n')
+			{
+				lineptr[nread - 1] = '\0';
+			}
+
+			args = token_lineptr(lineptr);
+			if (!execute_command(args))
+			{
+				exec_with_path(args[0], args);
+			}
+
+			if (args != NULL)
+			{
+				free(args);
+			}
+		}
+
+		free(lineptr);
 	}
+
 	return (0);
 }
